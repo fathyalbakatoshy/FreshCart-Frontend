@@ -1,0 +1,68 @@
+<form [formGroup]="editUser" (ngSubmit)="onSubmit(editUser)" class="p-fluid grid">
+    <div class="field col-6 m-0 pb-0">
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" placeholder="Username" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="editUser.get('username').touched && editUser.get('username').invalid" class="error">
+        <div *ngIf="editUser.get('username').errors?.required">Username is required.</div>
+        <div *ngIf="editUser.get('username').errors?.pattern">Username must contain only English letters, numbers, or underscores.</div>
+      </div>
+    </div>
+
+    <div class="field col-6 m-0 pb-0">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" type="text" placeholder="Full Name" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="editUser.get('name').touched && editUser.get('name').invalid" class="error">
+        <div *ngIf="editUser.get('name').errors?.required">Full Name is required.</div>
+      </div>
+    </div>
+
+    <div class="field col-6 m-0 pb-0">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Email address" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="editUser.get('email').touched && editUser.get('email').invalid" class="error">
+        <div *ngIf="editUser.get('email').errors?.required">Email is required.</div>
+        <div *ngIf="editUser.get('email').errors?.email">Invalid email address.</div>
+      </div>
+    </div>
+
+    <div class="field col-6 m-0 pb-0">
+      <label for="phone">Phone</label>
+      <input id="phone" formControlName="phone" type="text" placeholder="Phone number" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="editUser.get('phone').touched && editUser.get('phone').invalid" class="error">
+        <div *ngIf="editUser.get('phone').errors?.required">Phone number is required.</div>
+        <div *ngIf="editUser.get('phone').errors?.pattern">Invalid phone number. Must be Egyptian.</div>
+      </div>
+    </div>
+
+    <div class="field col-6 m-0 pb-0">
+        <label for="role">Role</label>
+      <p-dropdown id="role" formControlName="role" [options]="roles" placeholder="Select a role" appendTo="body" styleClass="w-full mb-2"></p-dropdown>
+      <div *ngIf="editUser.get('role').touched && editUser.get('role').invalid" class="error">
+        <div *ngIf="editUser.get('role').errors?.required">Role is required.</div>
+      </div>
+    </div>
+    <div class="field col-6 m-0 pb-0">
+        <label for="isActive">Active</label>
+      <p-dropdown id="isActive" formControlName="isActive" [options]="active" placeholder="Select a Active" appendTo="body" styleClass="w-full mb-2"></p-dropdown>
+      <div *ngIf="editUser.get('isActive').touched && editUser.get('isActive').invalid" class="error">
+        <div *ngIf="editUser.get('isActive').errors?.required">Active is required.</div>
+      </div>
+    </div>
+    <div class="field col-6 m-0 pb-0">
+        <label for="isBlocked">Blocked</label>
+      <p-dropdown id="isBlocked" formControlName="isBlocked" [options]="blocked" placeholder="Select a blocked" appendTo="body" styleClass="w-full mb-2"></p-dropdown>
+      <div *ngIf="editUser.get('isBlocked').touched && editUser.get('isBlocked').invalid" class="error">
+        <div *ngIf="editUser.get('isBlocked').errors?.required">Blocked is required.</div>
+      </div>
+    </div>
+
+    <div class="field col-6 m-0 pb-0">
+        <label for="isVerified">Verified</label>
+      <p-dropdown id="isVerified" formControlName="isVerified" [options]="verified" placeholder="Select a verified" appendTo="body" styleClass="w-full mb-2"></p-dropdown>
+      <div *ngIf="editUser.get('isVerified').touched && editUser.get('isVerified').invalid" class="error">
+        <div *ngIf="editUser.get('isVerified').errors?.required">Verified is required.</div>
+      </div>
+    </div>
+
+    <button pButton pRipple label="Update User" styleClass="d-block ms-auto" [disabled]="!editUser.valid"></button>
+  </form>

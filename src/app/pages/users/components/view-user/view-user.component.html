@@ -1,0 +1,105 @@
+<div class="grid p-fluid">
+    <!-- User Name -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Account Name</div>
+            <div class="col-8 border-1" >{{ user.name }}</div>
+        </div>
+    </div>
+
+    <!-- Username -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none ">Username</div>
+            <div class="col-8 border-1 ">{{ user.username }}</div>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Email</div>
+            <div class="col-8 border-1">{{ user.email }}</div>
+        </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Phone</div>
+            <div class="col-8 border-1">{{ user.phone }}</div>
+        </div>
+    </div>
+
+    <!-- Role -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Role</div>
+            <div class="col-8 border-1">{{ user.role }}</div>
+        </div>
+    </div>
+
+    <!-- Created At -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Created At</div>
+            <div class="col-8 border-1">{{ convertTimestamp(user.createdAt) }}</div>
+        </div>
+    </div>
+
+    <!-- Updated At -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Updated At</div>
+            <div class="col-8 border-1">{{ convertTimestamp(user.updatedAt) }}</div>
+        </div>
+    </div>
+
+    <!-- Total Addresses -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Total Addresses</div>
+            <div class="col-8 border-1">{{ user.totalAddresses }}</div>
+        </div>
+    </div>
+
+    <!-- Total Cart Items -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Total Cart Items</div>
+            <div class="col-8 border-1">{{ user.totalCart }}</div>
+        </div>
+    </div>
+
+    <!-- Total Orders -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Total Orders</div>
+            <div class="col-8 border-1">{{ user.totalOrders }}</div>
+        </div>
+    </div>
+
+    <!-- Points -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Points</div>
+            <div class="col-8 border-1">{{ user.points }}</div>
+        </div>
+    </div>
+
+    <!-- Wishlist -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Wishlist</div>
+            <div class="col-8 border-1">{{ user.totalWishlist }}</div>
+        </div>
+    </div>
+
+    <!-- Total Reviews -->
+    <div class="col-12  p-shadow-2 ">
+        <div class="grid p-align-center">
+            <div class="col-4 p-text-bold border-1 border-right-none">Total Reviews</div>
+            <div class="col-8 border-1">{{ user.totalReviews }}</div>
+        </div>
+    </div>
+</div>

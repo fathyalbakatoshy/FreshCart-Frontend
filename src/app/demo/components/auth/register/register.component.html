@@ -1,0 +1,43 @@
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+    <div class="flex flex-column align-items-center justify-content-center">
+        <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
+            <div class="w-full surface-card py-6 px-5 sm:px-6" style="border-radius:53px">
+                <div class="text-center mb-5">
+                    <div class="text-900 text-3xl font-medium mb-3">Create Your Account</div>
+                    <span class="text-600 font-medium">Sign up to start using the app</span>
+                </div>
+
+                <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+                    <label for="username" class="block text-900 text-xl font-medium mb-2"></label>
+                    <input id="username" formControlName="username" type="text" placeholder="Username" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+
+                    <label for="name" class="block text-900 text-xl font-medium mb-2"></label>
+                    <input id="name" formControlName="name" type="text" placeholder="Full Name" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+
+                    <label for="email" class="block text-900 text-xl font-medium mb-2"></label>
+                    <input id="email" formControlName="email" type="text" placeholder="Email address" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+
+                    <label for="phone" class="block text-900 text-xl font-medium mb-2"></label>
+                    <input id="phone" formControlName="phone" type="text" placeholder="Phone number" pInputText class="w-full md:w-30rem mb-5" style="padding:1rem">
+
+                    <label for="password" class="block text-900 font-medium text-xl mb-2"></label>
+                    <p-password id="password" formControlName="password" [feedback]="false" placeholder="Password" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
+
+                    <div class="flex align-items-center justify-content-between mb-5 gap-5">
+                        <div class="flex align-items-center">
+                            <p-checkbox id="terms" [binary]="true" styleClass="mr-2"></p-checkbox>
+                            <label for="terms">I agree to the terms and conditions</label>
+                        </div>
+                    </div>
+
+                    <button pButton pRipple label="Sign Up" class="w-full p-3 text-xl" [disabled]="!registerForm.valid"></button>
+                </form>
+
+                <div class="text-center mt-4">
+                    <span class="text-600 font-medium">Already have an account?</span>
+                    <a class="font-medium ml-2 text-primary cursor-pointer" [routerLink]="['/auth/login']">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

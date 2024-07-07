@@ -1,0 +1,49 @@
+<form [formGroup]="addUser" (ngSubmit)="onSubmit(addUser)">
+    <div>
+      <input id="username" formControlName="username" type="text" placeholder="Username" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="addUser.get('username').touched && addUser.get('username').invalid" class="error">
+        <div *ngIf="addUser.get('username').errors?.required">Username is required.</div>
+        <div *ngIf="addUser.get('username').errors?.pattern">Username must contain only English letters, numbers, or underscores.</div>
+      </div>
+    </div>
+
+    <div>
+      <input id="name" formControlName="name" type="text" placeholder="Full Name" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="addUser.get('name').touched && addUser.get('name').invalid" class="error">
+        <div *ngIf="addUser.get('name').errors?.required">Full Name is required.</div>
+      </div>
+    </div>
+
+    <div>
+      <input id="email" formControlName="email" type="email" placeholder="Email address" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="addUser.get('email').touched && addUser.get('email').invalid" class="error">
+        <div *ngIf="addUser.get('email').errors?.required">Email is required.</div>
+        <div *ngIf="addUser.get('email').errors?.email">Invalid email address.</div>
+      </div>
+    </div>
+
+    <div>
+      <input id="phone" formControlName="phone" type="text" placeholder="Phone number" pInputText class="w-full mb-2" style="padding:1rem">
+      <div *ngIf="addUser.get('phone').touched && addUser.get('phone').invalid" class="error">
+        <div *ngIf="addUser.get('phone').errors?.required">Phone number is required.</div>
+        <div *ngIf="addUser.get('phone').errors?.pattern">Invalid phone number. Must be Egyptian.</div>
+      </div>
+    </div>
+
+    <div>
+      <p-password id="password" formControlName="password" [feedback]="false" placeholder="Password" [toggleMask]="true" styleClass="mb-2 w-full" inputStyleClass="w-full p-3"></p-password>
+      <div *ngIf="addUser.get('password').touched && addUser.get('password').invalid" class="error">
+        <div *ngIf="addUser.get('password').errors?.required">Password is required.</div>
+        <div *ngIf="addUser.get('password').errors?.minLength">Password must be at least 6 characters long.</div>
+      </div>
+    </div>
+
+    <div>
+      <p-dropdown id="role" formControlName="role" [options]="roles" placeholder="Select a role" appendTo="body" styleClass="w-full mb-2"></p-dropdown>
+      <div *ngIf="addUser.get('role').touched && addUser.get('role').invalid" class="error">
+        <div *ngIf="addUser.get('role').errors?.required">Role is required.</div>
+      </div>
+    </div>
+
+    <button pButton pRipple label="Add User" styleClass="d-block ms-auto" [disabled]="!addUser.valid"></button>
+  </form>

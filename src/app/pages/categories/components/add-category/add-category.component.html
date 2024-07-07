@@ -1,0 +1,43 @@
+<p>Add Category</p>
+<form [formGroup]="addCategoryForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input id="name" formControlName="name" type="text" placeholder="Category Name" pInputText class="w-full mb-2" />
+    <div *ngIf="addCategoryForm.get('name').touched && addCategoryForm.get('name').invalid" class="error">
+      <div *ngIf="addCategoryForm.get('name').errors?.required">Category name is required.</div>
+      <div *ngIf="addCategoryForm.get('name').errors?.minlength">Category name must be at least 3 characters long.</div>
+    </div>
+  </div>
+
+  <div>
+    <input id="image" formControlName="image" type="text" placeholder="Image URL" pInputText class="w-full mb-2" />
+    <div *ngIf="addCategoryForm.get('image').touched && addCategoryForm.get('image').invalid" class="error">
+      <div *ngIf="addCategoryForm.get('image').errors?.required">Image URL is required.</div>
+    </div>
+  </div>
+
+  <div>
+    <textarea id="description" formControlName="description" placeholder="Description" pInputTextarea class="w-full mb-2"></textarea>
+  </div>
+
+  <div>
+    <p-dropdown [options]="[{label: 'Yes', value: true}, {label: 'No', value: false}]" formControlName="isActive" placeholder="Is Active"></p-dropdown>
+  </div>
+
+  <div>
+    <p-dropdown [options]="[{label: 'Yes', value: true}, {label: 'No', value: false}]" formControlName="featured" placeholder="Featured"></p-dropdown>
+  </div>
+
+  <div>
+    <input id="tags" formControlName="tags" type="text" placeholder="Tags (comma separated)" pInputText class="w-full mb-2" />
+  </div>
+
+  <div>
+    <input id="metaTitle" formControlName="metaTitle" type="text" placeholder="Meta Title" pInputText class="w-full mb-2" />
+  </div>
+
+  <div>
+    <input id="metaDescription" formControlName="metaDescription" type="text" placeholder="Meta Description" pInputText class="w-full mb-2" />
+  </div>
+
+  <button pButton pRipple label="Add Category" styleClass="d-block ms-auto" [disabled]="!addCategoryForm.valid"></button>
+</form>

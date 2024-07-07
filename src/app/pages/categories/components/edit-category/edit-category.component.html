@@ -1,0 +1,39 @@
+<p>Edit Category</p>
+<form [formGroup]="editCategoryForm" (ngSubmit)="onSubmit()" class="p-fluid grid">
+  <div class="field col-6 m-0 pb-0">
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text" placeholder="Category Name" pInputText class="w-full mb-2" />
+    <div *ngIf="editCategoryForm.get('name').touched && editCategoryForm.get('name').invalid" class="error">
+      <div *ngIf="editCategoryForm.get('name').errors?.required">Category name is required.</div>
+      <div *ngIf="editCategoryForm.get('name').errors?.minlength">Category name must be at least 3 characters long.</div>
+    </div>
+  </div>
+
+  <div class="field col-6 m-0 pb-0">
+    <label for="image">Image URL</label>
+    <input id="image" formControlName="image" type="text" placeholder="Image URL" pInputText class="w-full mb-2" />
+    <div *ngIf="editCategoryForm.get('image').touched && editCategoryForm.get('image').invalid" class="error">
+      <div *ngIf="editCategoryForm.get('image').errors?.required">Image URL is required.</div>
+    </div>
+  </div>
+
+  <div class="field col-12 m-0 pb-0">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" placeholder="Description" pInputTextarea class="w-full mb-2"></textarea>
+  </div>
+
+  <div class="field col-6 m-0 pb-0">
+    <p-checkbox id="isActive" formControlName="isActive" label="Is Active"></p-checkbox>
+  </div>
+
+  <div class="field col-6 m-0 pb-0">
+    <p-checkbox id="featured" formControlName="featured" label="Featured"></p-checkbox>
+  </div>
+
+  <div class="field col-6 m-0 pb-0">
+    <label for="tags">Tags</label>
+    <input id="tags" formControlName="tags" type="text" placeholder="Tags (comma separated)" pInputText class="w-full mb-2" />
+  </div>
+
+  <button pButton pRipple label="Update Category" styleClass="d-block ms-auto" [disabled]="!editCategoryForm.valid"></button>
+</form>

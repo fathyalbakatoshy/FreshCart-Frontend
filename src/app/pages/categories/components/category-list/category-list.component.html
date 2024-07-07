@@ -1,0 +1,65 @@
+<div class="card">
+    <div>
+      <p-table
+        #dt1
+        [value]="categoryList"
+        dataKey="_id"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [loading]="loading"
+        [paginator]="true"
+        rowHover="true"
+        styleClass="p-datatable-gridlines"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Categories"
+        [globalFilterFields]="['name', 'description', 'createdAt']"
+      >
+        <ng-template pTemplate="caption">
+          <div class="flex justify-content-between align-items-center">
+            <button pButton class="fw-bold" label="Add Category" icon="pi pi-plus" (click)="addCategory()"></button>
+            <span class="p-input-icon-right w-fit">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search" />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th> Name </th>
+                <th> Description </th>
+                <th> Active </th>
+                <th> Featured </th>
+                <th> Parent Category </th>
+                <th> Created At </th>
+                <th> Updated At </th>
+                <th> Action </th>
+              </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-category>
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>{{ category.description }}</td>
+                <td>{{ category.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ category.featured ? 'Yes' : 'No' }}</td>
+                <td>{{ category.parent ? category.parent.name : 'None' }}</td>
+
+                <td>{{ category.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                <td>{{ category.updatedAt | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                <td>
+                  <i class="pi pi-pencil" (click)="editCategory(category)"></i>
+                  <i class="pi pi-trash" (click)="deleteCategory(category._id)"></i>
+                </td>
+              </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="4">No categories found.</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="loadingbody">
+          <tr>
+            <td colspan="4">Loading categories data. Please wait.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
